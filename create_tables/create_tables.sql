@@ -20,7 +20,7 @@ CREATE TABLE listeners (
 
 CREATE TABLE premium_accounts (
   id_premium SERIAL PRIMARY KEY,
-  id_listener INT REFERENCES listeners(id_listener),
+  id_listener INT REFERENCES listeners(id_listener) ON DELETE CASCADE,
   open_date TIMESTAMP,
   termination_date TIMESTAMP
 );
@@ -28,12 +28,12 @@ CREATE TABLE premium_accounts (
 CREATE TABLE playlists (
   id_playlist SERIAL PRIMARY KEY,
   name VARCHAR(255),
-  id_owner INT REFERENCES listeners(id_listener)
+  id_owner INT REFERENCES listeners(id_listener) ON DELETE SET NULL
 );
 
 CREATE TABLE playlists_listeners (
   id_playlist INT REFERENCES playlists(id_playlist),
-  id_listener INT REFERENCES listeners(id_listener),
+  id_listener INT REFERENCES listeners(id_listener) ON DELETE CASCADE,
   PRIMARY KEY (id_playlist, id_listener)
 );
 

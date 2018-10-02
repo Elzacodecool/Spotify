@@ -25,8 +25,6 @@ CREATE TABLE premium_accounts (
   termination_date TIMESTAMP
 );
 
-
-
 CREATE TABLE playlists (
   id_playlist SERIAL PRIMARY KEY,
   name VARCHAR(255),

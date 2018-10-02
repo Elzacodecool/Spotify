@@ -18,6 +18,8 @@ CREATE TABLE listeners (
   register_date TIMESTAMP
 );
 
+
+
 CREATE TABLE premium_accounts (
   id_premium SERIAL PRIMARY KEY,
   id_listener INT REFERENCES listeners(id_listener) ON DELETE CASCADE,

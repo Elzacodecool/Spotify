@@ -43,3 +43,32 @@ CREATE TABLE playlists_songs (
   PRIMARY KEY (id_playlist, id_song)
 );
 
+CREATE TABLE artists (
+  id_artist SERIAL PRIMARY KEY,
+  name VARCHAR(255)
+);
+
+CREATE TABLE albums (
+  id_album SERIAL PRIMARY KEY,
+  name VARCHAR(255),
+  creation_date TIMESTAMP
+);
+
+CREATE TABLE albums_artist (
+  id_album INT REFERENCES albums(id_album),
+  id_artist INT REFERENCES artists(id_artist),
+  PRIMARY KEY (id_album, id_artist)
+);
+
+CREATE TABLE songs_artist (
+  id_song INT REFERENCES songs(id_song),
+  id_artist INT REFERENCES artists(id_artist),
+  PRIMARY KEY (id_song, id_artist)
+);
+
+CREATE TABLE albums_songs (
+  id_album INT REFERENCES albums(id_album),
+  id_song INT REFERENCES songs(id_song),
+  PRIMARY KEY (id_album, id_song)
+);
+

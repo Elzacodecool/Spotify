@@ -25,6 +25,8 @@ CREATE TABLE premium_accounts (
   termination_date TIMESTAMP
 );
 
+
+
 CREATE TABLE playlists (
   id_playlist SERIAL PRIMARY KEY,
   name VARCHAR(255),
@@ -54,13 +56,13 @@ CREATE TABLE albums (
   creation_date TIMESTAMP
 );
 
-CREATE TABLE albums_artist (
+CREATE TABLE albums_artists (
   id_album INT REFERENCES albums(id_album),
   id_artist INT REFERENCES artists(id_artist),
   PRIMARY KEY (id_album, id_artist)
 );
 
-CREATE TABLE songs_artist (
+CREATE TABLE songs_artists (
   id_song INT REFERENCES songs(id_song),
   id_artist INT REFERENCES artists(id_artist),
   PRIMARY KEY (id_song, id_artist)

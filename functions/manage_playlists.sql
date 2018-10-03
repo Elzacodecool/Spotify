@@ -11,7 +11,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION delete_playlists(id_user INT, playlist_id INT)
-RETURNs VOID AS $$
+RETURNS VOID AS $$
 BEGIN
 DELETE FROM playlists_listeners
   WHERE playlists_listeners.id_listener = id_user AND playlists_listeners.id_playlist = playlist_id;
@@ -23,10 +23,15 @@ IF (SELECT exists (SELECT 1 FROM playlists_listeners WHERE id_playlist = playlis
 END;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION create_empty_playlist(playlist_name VARCHAR, owner_id INT)
+  RETURNS VOID AS $$
+BEGIN
+  INSERT INTO playlists(name, id_owner)
+  VALUES (playlist_name, owner_id);
+END;
+$$ LANGUAGE plpgsql;
 
-
-INSERT INTO playlists(name, id_owner)
-  VALUES ('newconnection', 1);
+SELECT create_empty_playlist('newconnection2', 1);
 
 SELECT delete_playlists(1,1004);
 

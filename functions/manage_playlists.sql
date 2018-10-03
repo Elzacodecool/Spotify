@@ -10,7 +10,17 @@ RETURN QUERY SELECT
 END;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION delete_playlists(id_user INT, playlist_id INT)
+RETURNs VOID AS $$
+BEGIN
+DELETE FROM playlists_listeners
+  WHERE playlists_listeners.id_listener = id_user AND playlists_listeners.id_playlist = playlist_id;
+END;
+$$ LANGUAGE plpgsql;
+
 INSERT INTO playlists(name, id_owner)
   VALUES ('new Listsds', 1);
+
+SELECT delete_playlists(1,1003);
 
 SELECT * FROM  get_all_playlists(1);

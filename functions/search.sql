@@ -110,12 +110,32 @@ BEGIN
 end;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION get_artists_by_song(id_displayed_song INT)
+  RETURNS TABLE (
+  id_artist INT,
+  name VARCHAR(255)
+  ) AS $$
+BEGIN
+  RETURN QUERY SELECT
+  artists.id_artist,
+  artists.name
+  FROM
+      songs_artists
+  JOIN
+      artists
+      ON songs_artists.id_artist = artists.id_artist
+  WHERE songs_artists.id_song = id_displayed_song;
+
+end;
+$$ LANGUAGE plpgsql;
+
 
 SELECT * FROM search_by_phrase('H');
 SELECT * FROM get_songs_from_album(1);
 SELECT * FROM get_artists_from_album(1);
 SELECT * FROM get_songs_by_artist(1);
 SELECT * FROM get_albums_by_artist(1);
+SELECT * FROM get_artists_by_song(1);
 
 
 

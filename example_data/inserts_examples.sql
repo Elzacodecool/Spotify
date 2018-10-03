@@ -18,7 +18,7 @@ INSERT INTO listeners(name, login, password, register_date)
   VALUES ('Eliza', 'eliza', 'password', now());
 
 INSERT INTO playlists(name, id_owner)
-  VALUES ('name', 1);
+  VALUES ('testttssvhgvg', 4);
 
 INSERT INTO playlists_listeners VALUES (1,1);
 

@@ -15,3 +15,6 @@ COPY premium_accounts(id_listener, open_date, termination_date)
 
 COPY playlists(name, id_owner)
   FROM '/Users/elzbietakrzych/Documents/codecool/ADVANCED/2018_10_01_TW/Spotify/example_data/playlists.csv' DELIMITER ',' CSV HEADER;
+
+COPY songs(name, id_category)
+  FROM '/Users/elzbietakrzych/Documents/codecool/ADVANCED/2018_10_01_TW/Spotify/example_data/songs.csv' DELIMITER ',' CSV HEADER;

@@ -998,5 +998,4 @@ INSERT INTO public.playlists (id_playlist, name, id_owner) VALUES (997, 'massa',
 INSERT INTO public.playlists (id_playlist, name, id_owner) VALUES (998, 'leo odio porttitor', 513);
 INSERT INTO public.playlists (id_playlist, name, id_owner) VALUES (999, 'odio consequat varius integer', 1602);
 INSERT INTO public.playlists (id_playlist, name, id_owner) VALUES (1000, 'ut massa quis augue luctus', 1595);
-INSERT INTO public.playlists (id_playlist, name, id_owner) VALUES (1001, 'testttss', 3);
-INSERT INTO public.playlists (id_playlist, name, id_owner) VALUES (1002, 'testttssvhgvg', 4);
+

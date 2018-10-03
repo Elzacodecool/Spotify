@@ -998,3 +998,4 @@ INSERT INTO public.albums (id_album, name, creation_date) VALUES (997, 'Fandry',
 INSERT INTO public.albums (id_album, name, creation_date) VALUES (998, 'King of Masks, The (Bian Lian)', '1955-05-26 19:00:16.000000');
 INSERT INTO public.albums (id_album, name, creation_date) VALUES (999, 'Scarlet Pimpernel, The', '1938-04-07 07:35:46.000000');
 INSERT INTO public.albums (id_album, name, creation_date) VALUES (1000, 'Short Time', '1998-08-06 13:31:19.000000');
+

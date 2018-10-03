@@ -1,4 +1,4 @@
-INSERT INTO categories(name) VALUES ('jazz');
+INSERT INTO categories(name) VALUES ('jnnnnjnjnjnazz');
 
 INSERT INTO songs(name, id_category) VALUES ('Happy Birthday', 1);
 
@@ -15,10 +15,10 @@ INSERT INTO songs_artists VALUES(1,1);
 
 
 INSERT INTO listeners(name, login, password, register_date)
-  VALUES ('Eliza', 'eliza', 'password', now());
+  VALUES ('Ela', 'elka', 'password', now());
 
 INSERT INTO playlists(name, id_owner)
-  VALUES ('testttssvhgvg', 4);
+  VALUES ('testttssvhgvgssss', 1);
 
 INSERT INTO playlists_listeners VALUES (1,1);
 

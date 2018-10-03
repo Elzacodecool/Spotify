@@ -1,8 +1,3 @@
-CREATE TRIGGER play_list_update
-  AFTER INSERT
-  ON playlists
-  FOR EACH ROW
-  EXECUTE PROCEDURE update_playlists_listeners();
 
 CREATE OR REPLACE FUNCTION update_playlists_listeners()
   RETURNS trigger AS
@@ -14,3 +9,10 @@ BEGIN
 END;
 $$
 LANGUAGE plpgsql;
+
+
+CREATE TRIGGER play_list_update
+  AFTER INSERT
+  ON playlists
+  FOR EACH ROW
+  EXECUTE PROCEDURE update_playlists_listeners();

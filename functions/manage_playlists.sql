@@ -15,12 +15,19 @@ RETURNs VOID AS $$
 BEGIN
 DELETE FROM playlists_listeners
   WHERE playlists_listeners.id_listener = id_user AND playlists_listeners.id_playlist = playlist_id;
+IF (SELECT exists (SELECT 1 FROM playlists_listeners WHERE id_playlist = playlist_id LIMIT 1)) THEN RETURN ;
+  ELSE
+    DELETE FROM playlists
+    WHERE playlists.id_playlist = playlist_id;
+  END IF;
 END;
 $$ LANGUAGE plpgsql;
 
-INSERT INTO playlists(name, id_owner)
-  VALUES ('new Listsds', 1);
 
-SELECT delete_playlists(1,1003);
+
+INSERT INTO playlists(name, id_owner)
+  VALUES ('newconnection', 1);
+
+SELECT delete_playlists(1,1004);
 
 SELECT * FROM  get_all_playlists(1);

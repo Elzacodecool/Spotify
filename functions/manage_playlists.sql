@@ -31,8 +31,22 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+--ONLY TO READ
+CREATE OR REPLACE FUNCTION update_playlists_listeners(id_user INT, playlist_id INT)
+RETURNS VOID AS
+$$
+BEGIN
+ INSERT INTO playlists_listeners(id_playlist, id_listener)
+ VALUES(playlist_id,id_user);
+END;
+$$
+LANGUAGE plpgsql;
+
+
 SELECT create_empty_playlist('newconnection2', 1);
 
-SELECT delete_playlists(1,1004);
+SELECT update_playlists_listeners(2, 1006);
 
-SELECT * FROM  get_all_playlists(1);
+SELECT delete_playlists(2,1006);
+
+SELECT * FROM  get_all_playlists(2);

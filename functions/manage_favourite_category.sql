@@ -3,6 +3,7 @@ SELECT id_listener, id_category, count(id_category) as count FROM songs
   INNER JOIN playlists_songs ps on songs.id_song = ps.id_song
   INNER JOIN playlists_listeners ON ps.id_playlist = playlists_listeners.id_playlist
   GROUP BY id_listener, id_category;
+DROP VIEW favourite_category;
 
 CREATE OR REPLACE FUNCTION find_favourite_category(user_id INT)
 RETURNS INT AS

@@ -6,8 +6,6 @@ INSERT INTO artists(name) VALUES ('Sheila Sue');
 
 INSERT INTO albums(name) VALUES ('Hello');
 
-INSERT INTO albums_artists VALUES(1,1);
-
 INSERT INTO albums_songs VALUES(1,1);
 
 INSERT INTO songs_artists VALUES(1,1);

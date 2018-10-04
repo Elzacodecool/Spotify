@@ -55,10 +55,8 @@ DECLARE
   rec   record;
 BEGIN
   SELECT create_empty_playlist(created_playlist_name, id_user) INTO created_playlist_id;
-  RAISE NOTICE 'id_playlist(%)', created_playlist_id;
   FOR rec IN SELECT id_song FROM playlists_songs WHERE playlist_id = id_playlist
     LOOP
-      RAISE NOTICE 'id_song(%)', rec;
       PERFORM add_song_to_playlist(rec.id_song, created_playlist_id);
     end loop;
 END;

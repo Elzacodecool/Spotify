@@ -30,6 +30,15 @@ end;
 $$ LANGUAGE plpgsql;
 
 
+CREATE VIEW albums_artists_view AS
+  SELECT distinct id_album, id_artist
+  FROM
+      albums_songs
+  JOIN
+      songs_artists
+      ON albums_songs.id_song = songs_artists.id_song;
+
+
 CREATE OR REPLACE FUNCTION get_songs_from_album(id_displayed_album INT)
   RETURNS TABLE (
   id_song INT,
@@ -154,13 +163,6 @@ end;
 $$ LANGUAGE plpgsql;
 
 
-CREATE VIEW albums_artists_view AS
-  SELECT distinct id_album, id_artist
-  FROM
-      albums_songs
-  JOIN
-      songs_artists
-      ON albums_songs.id_song = songs_artists.id_song;
 
 DROP VIEW albums_artists_view;
 
@@ -171,8 +173,6 @@ SELECT * FROM get_songs_by_artist(1); --810, 619 OK
 SELECT * FROM get_albums_by_artist(1);
 SELECT * FROM get_artists_by_song(1); --715 OK
 SELECT * FROM get_albums_by_song(1); --342, 571, 415 OK
-INSERT INTO songs_artists VALUES (481, 900);
-INSERT INTO songs_artists VALUES (978, 1000);
 SELECT * FROM songs_artists WHERE id_artist = 1;
 
 select * from albums_artists_view WHERE id_album = 1; --518, 938, 900, 1000

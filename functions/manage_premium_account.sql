@@ -13,3 +13,16 @@ END;
 $$ LANGUAGE plpgsql;
 
 SELECT (check_If_valid_premium_account(798));
+
+
+CREATE OR REPLACE FUNCTION create_premium_account(user_id INT, period_in_month INT)
+RETURNS VOID AS
+$$
+BEGIN
+  INSERT INTO premium_accounts(id_listener, open_date, termination_date)
+  VALUES (user_id, CURRENT_TIMESTAMP, (CURRENT_TIMESTAMP+ interval '1 month'* period_in_month));
+end;
+$$
+LANGUAGE plpgsql;
+
+SELECT create_premium_account(1, 1);

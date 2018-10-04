@@ -44,6 +44,28 @@ BEGIN
 end;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION get_all_songs_from_playlist(id_displayed_playlist INT)
+  RETURNS TABLE(
+  id_song INT,
+  name VARCHAR(255),
+  id_category INT
+  )
+  AS $$
+BEGIN
+  RETURN QUERY SELECT
+    songs.id_song,
+    songs.name,
+    songs.id_category
+  FROM
+    playlists_songs
+  JOIN
+    songs
+        ON playlists_songs.id_song = songs.id_song
+  WHERE
+      playlists_songs.id_playlist = id_displayed_playlist;
+end;
+$$ LANGUAGE plpgsql;
+
 
 CREATE OR REPLACE FUNCTION display_songs_from_user_playlist(id_user INT, id_displayed_playlist INT)
   RETURNS VOID AS $$
